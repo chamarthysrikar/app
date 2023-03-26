@@ -6,8 +6,6 @@ from streamlit_server_state import server_state, server_state_lock
 from streamlit_webrtc import ClientSettings, WebRtcMode, webrtc_streamer
 from streamlit_image_select import image_select
 
-import av
-import cv2
 
 #Title
 st.title("Audio Driven Talking Head Demo")
@@ -59,11 +57,6 @@ def main():
             streamActive.append(stream)
 
     with column2:
-        def callback(frame):
-            img = frame.to_ndarray(format="bgr24")
-            img = cv2.cvtColor(cv2.Canny(img, 100, 200), cv2.COLOR_GRAY2BGR)
-            return av.VideoFrame.from_ndarray(img, format="bgr24")
-
         #Client 2 video & audio streamer
         st.header("Client 2")
         for stream in streamActive:
@@ -77,7 +70,6 @@ def main():
                         "video": True,
                         "audio": True,
                     },
-                video_frame_callback=callback,
                 source_audio_track=stream.output_audio_track,
                 source_video_track=stream.output_video_track,
                 desired_playing_state=stream.state.playing,
