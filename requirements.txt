@@ -2,3 +2,5 @@ streamlit
 streamlit_webrtc
 streamlit_server_state
 streamlit_image_select
+opencv-python
+av
