@@ -2,6 +2,7 @@
 
 #Import the required packages
 import streamlit as st
+pip install streamlit_server_state
 from streamlit_server_state import server_state, server_state_lock
 from streamlit_webrtc import ClientSettings, WebRtcMode, webrtc_streamer
 from streamlit_image_select import image_select
